@@ -1,0 +1,309 @@
+
+$primary-color: #FDD089;
+$secondary-color: #FEF7D7;
+$primary-font-color: #6B5048;
+$secondary-font-color: #6B5048;
+$primary-font:'Ribeye Marrow', cursive;
+$secondary-font:'Josefin Sans', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Ribeye+Marrow&display=swap');
+
+
+@mixin center-element {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+:root {
+  box-sizing: border-box;
+  font-family: $primary-font;
+  background-color: $primary-color;
+  font-size: calc(0.5em + 1vw);
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+svg {
+  pointer-events: none;
+}
+
+header {
+  color:$primary-font-color;
+  background-color: $primary-color;
+  display: flex;
+
+  h2 {
+    margin: 0 auto 0 0;
+    @include center-element;
+    font-weight: 650;
+    font-size: 0.8rem;
+
+  }
+}
+
+.main-container {
+  display: flex;
+}
+
+.side-bar {
+  background-color: $primary-color;
+  min-width: 10%;
+  max-width: 15%;
+  height: 100vh;
+  padding-top: 3em;
+  padding-left: 0.5em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  //To hide the scroll bar in internet explorer and mozilla based browsers
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+
+  h2 {
+    color: $primary-font-color;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    margin-top: 0.2em;
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  button{
+    display: block;
+    margin-top: 1em;
+    font-family: $secondary-font;
+    font-size: 1rem;
+    font-weight: 400;
+    background: transparent;
+    cursor: pointer;
+    border-width: thin;
+  }
+
+  button:focus{
+    outline: #ffa500;
+    border-color:  #ffa500;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    @include flex-column;
+
+    li {
+
+      margin-bottom: 1em;
+
+      a {
+
+        color: $primary-font-color;
+        font-family: $secondary-font;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 550;
+
+      }
+    }
+
+  }
+
+
+}
+// to hide the scroll bar in  webkit based browsers - safari, chrome, etc
+.side-bar::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+
+}
+
+.project-area {
+  color: $secondary-font-color;
+  border-style: solid;
+  border-radius: 30px 0 0 0;
+  border-width: thick 0 0 thick;
+  border-color: white;
+  width: 100%;
+  padding-left: 1.4em;
+  background-color: $secondary-color;
+  box-shadow: inset 2px 2px 1px 0 #3b1f02;
+
+
+
+
+  .project-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: $secondary-font;
+    font-weight: 600;
+  }
+
+  h1 {
+    border-bottom-style: double;
+    border-width: thick;
+    border-color: $secondary-font-color;
+    font-family: $primary-font;
+    @include center-element
+  }
+
+  .project-btn-container {
+    display: flex;
+
+    .delete-project-btn {
+      margin-left: 1em;
+      background: rgba(255, 0, 0,0.2);
+    }
+  }
+
+  button {
+    display: block;
+    margin-top: 1em;
+    font-family: $secondary-font;
+    font-size: 1rem;
+    font-weight: 400;
+    background: transparent;
+    cursor: pointer;
+    border-width: thin;
+    max-width: 10%;
+  }
+  .task-container {
+    display:flex;
+
+    border-bottom-style: solid;
+    border-width: thin;
+    border-color: $secondary-font-color;
+    max-width: 90%;
+
+    .done-task-btn {
+      margin-right: 1em;
+    }
+
+    .done-task-btn[data-is-done="true"]{
+      background-color: rgba(0, 255, 2,0.4);
+    }
+
+    .done-task-btn[data-is-done="true"] + .task-text .task-description{
+      text-decoration-line: line-through;
+    }
+
+    .delete-task-btn {
+     background: rgba(255, 0, 0,0.2);
+     margin-left: auto;
+    }
+
+    .task-text {
+      display: flex;
+      flex-direction: column;
+
+
+      .task-description {
+        margin-bottom: 0.1em;
+        word-break: break-all;
+      }
+
+      .task-time-container{
+        display: flex;
+
+        p{
+          color: grey;
+          font-size: 0.6rem;
+          margin-right: 1em;
+
+        }
+      }
+
+    }
+
+
+  }
+
+
+
+
+}
+
+//------------------------------Form Styles Start-------------------------------------
+.form-wrapper {
+  background: rgba(0, 0, 0,0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  display:none;
+
+}
+
+.form-container {
+  background-color: $primary-color;
+  width: 25em;
+  height: auto;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: thick;
+  border-radius: 20px;
+  border-color: #3b1f02;
+
+
+  label{
+    font-size: 0.8rem;
+  }
+
+  input {
+    margin-top: 0.2em;
+    width: 100%;
+    font-size: 1rem;
+    font-family: $secondary-font;
+  }
+
+  .form-btn-container{
+    margin-left: auto;
+    margin-top: 1em;
+    display: flex;
+    padding-bottom: 1em;
+
+    button{
+      display: block;
+      margin-top: 1em;
+      font-family: $secondary-font;
+      font-size: 1rem;
+      font-weight: 400;
+      background: transparent;
+      cursor: pointer;
+      border-width: thin;
+      margin-right: 1em;
+    }
+
+  }
+
+
+}
+
+//------------------------------Form Styles End-------------------------------------
+
